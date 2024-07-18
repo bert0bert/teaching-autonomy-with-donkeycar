@@ -1,6 +1,6 @@
 # Teaching Autonomy Through Donkeycar
 
-This experiment utilizes Donkeycar, the "Hello World" of self-driving cars. This experiment will teach you the basics of self-driving cars and how to use them with small RC cars.
+This experiment utilizes Donkeycar, the "Hello World" of self-driving cars. This experiment will teach you the basics of self-driving cars and how to use them with small RC cars. 
 
 It should take 2-3 hours to run through this experiment.
 
@@ -18,7 +18,7 @@ This experiment is specifically meant to teach students how to use donkeycar in 
 
 ### Downloading Donkeycar to Cloudlab server
 
-Our first step is to download Donkeycar to our cloudserver
+Our first step is to download Donkeycar to our cloudlab server
 
 ```
 # get donkeycar
