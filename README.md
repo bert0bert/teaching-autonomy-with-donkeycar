@@ -58,3 +58,54 @@ DONKEY_GYM_ENV_NAME = "donkey-generated-track-v0"
 GYM_CONF = { "body_style" : "car01", "body_rgb" : (255, 0, 0), "car_name" : "nyu", "font_size" : 100}
 EOF
 ```
+
+### Running Donkeygym
+
+TBD
+
+### Cleaning data
+
+In order to train a machine learning model we have to make sure we have a "clean" dataset, which means none of our data contains images of crashes or going through any objects. Still within the VNC window run the following on a terminal:
+```
+donkey UI
+```
+
+Within the donkey UI, select 'Tub Manager" on the top left corner. Once it finishes loadingg select 'Load Config' and until you get to your mycar director. If done correctly, when pressing on 'Load Tub' you can then select your dataset name (in this case I chose the name of my dataset to be 'mydata'). It'll load all your data where you can look through and delete.
+
+To delete data, start from right before you crash your car and press the button 'Set left', then look for right when you start to drive back on track and then press 'Set right'. Then you can delete and reload tub. Note: if you forget to set a left or a right, it will delete everything from the starting point to where you set right or from wherever you set left until the ending point of your data set. Make sure you select a 'set left' and 'set right'. Your dataset automatically saves when you delete and reload tub.
+
+
+### Configuring Cloudlab for Training
+
+We're now going to train a model using the dataset we collected. 
+```
+cd donkeycar
+git checkout main
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -e .[pc] tensorflow==2.12
+donkey createcar --path ~/mycar
+```
+
+### Training model
+
+Using the data we collected and now have cloudlab configured, we are now going to train a model.
+First check and see if DEAFAULT_MODEL_TYPE = 'linear'
+```
+cd ~/mycar
+nano myconfig.py
+```
+
+The line should look like this: 
+```
+DEFAULT_MODEL_TYPE = 'linear'
+```
+
+Now it's time to train the model.
+```
+cd mycar
+donkey train --tub ./data/[data subdirectory] --model ./models/<model_name>.h5
+```
+
+### Running model
+TBD
