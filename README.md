@@ -1,4 +1,4 @@
-# Teaching Autonomy Through Donkeycar
+# Self-Driving Cars with Donkeycar
 
 This experiment utilizes Donkeycar, the "Hello World" of self-driving cars. This experiment will teach you the basics of self-driving cars and how to use them with small RC cars. 
 
