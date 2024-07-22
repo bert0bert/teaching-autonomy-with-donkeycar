@@ -12,6 +12,14 @@ You can run this experiment on the [Cloudlab](https://cloudlab.us/) testbed. To 
 
 Donkeycar is an open-source self-driving platform that allows people from various backgrounds utilize self-driving in their Remote Controlled (RC) cars without having to deal with low-level details. The reason we use Donkeycar is because of it's high-level of abstraction and how easy it us to use in an experiment. It's a great way to close the gap between the hardware of your car and machine learning implemented in python, that way the experimenter doesn't need to worry about writing code.
 
+### End to End Deep Learning for Autonomous Vehicles
+
+The deep learning autopilot uses a single forward facing camera and a convolutional neural network (CNN) to implement an autopilot technique called "Behavioral Cloning" (or Imitation Leaerning). The goal is to create an autopilot that imitates that actions of a human driving the car. The process is as follows:
+
+A human manually drives around a track to collect data, Donkeycar records this data at 20 times per second, each piece of data has three components: a camera image, a throttle value, and steering value. All of these values captured at the same time for each camera image. The data is then cleaned as to make sure a machine learning model doesn't learn to replicate a crash a steering off course. Finally, using the data collected we train a Convolutional Neural Network. Using the trained CNN to infer throttle and steering values given an image, we can now run the model on the simulator in a similar track. Whenever an image is taken and is given to the CNN the cars harrdware is then given a thorttle and steering value; that is done 20 times per second. 
+
+Note: Since the deep learning autopilot depends on camera image, lighting conditions are important so in a controlled environment where lighting can be controlled this deep learning template is very effective, but when done outside it can be more difficult.
+
 ## Experiment Methodology
 
 This experiment is specifically meant to teach students how to use donkeycar in a virtual environment using donkeygym. So using a cloudlab instance, we will be learning how download and install donkeycar, run the donkeygym simulator to collect data, clean data, train a machine learning model, and use that machine learning model to run a self-driving car within our simulator. 
