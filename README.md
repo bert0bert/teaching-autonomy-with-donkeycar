@@ -1,6 +1,6 @@
 # Self-Driving Cars with Donkeycar
 
-This experiment utilizes Donkeycar, the "Hello World" of self-driving cars. This experiment will teach you the basics of self-driving cars and how to use them with small RC cars. 
+This experiment utilizes Donkeycar, the "Hello World" of self-driving cars. In this experiment you will learn the basics of applying autonomous driving to your own RC car.
 
 It should take 2-3 hours to run through this experiment.
 
@@ -22,7 +22,7 @@ Note: Since the deep learning autopilot depends on camera image, lighting condit
 
 ## Experiment Methodology
 
-This experiment is specifically meant to teach students how to use donkeycar in a virtual environment using donkeygym. So using a cloudlab instance, we will be learning how download and install donkeycar, run the donkeygym simulator to collect data, clean data, train a machine learning model, and use that machine learning model to run a self-driving car within our simulator. 
+In this experiment you will use donkeycar in a virtual environment using donkeygym. Using a cloudlab instance, we will go through how to doanload donkeycar, run the donkeygym simulator to collect data, train a machine learning model, and run that model using the donkeygym simulator.
 
 ### Downloading Donkeycar to Cloudlab server
 
@@ -64,6 +64,7 @@ DONKEY_SIM_PATH = "remote"
 SIM_HOST = "127.0.0.1"
 DONKEY_GYM_ENV_NAME = "donkey-generated-track-v0"
 GYM_CONF = { "body_style" : "car01", "body_rgb" : (255, 0, 0), "car_name" : "nyu", "font_size" : 100}
+AUTO_RECORD_ON_THROTTLE = True
 EOF
 ```
 
@@ -71,7 +72,15 @@ EOF
 
 TBD
 
+### Collecting Data Tips
+
+Back when we were creating the myconfig.py model, we set up our data collection so that if you do crash you're car, all you have to do is stop recording or press "End Recording". What this does is it deleted the last 100 records recorded immediately before you ended your recording-- getting completely rid of the crash. So if you are collecting data and you accidentially crash, all you have to do is end recording and start recording right after. 
+
+Before you start collecting data, try driving around a few times before you start recording data, that way you can get a feel for the track, this will minimize the amount of mistakes you make during your data collection process. When you're confident enough you can now restart the python manage.py drive to create a new data recording session. Since you have auto record on, all you need to do is start driving in order to start collecting data. For a strong dataset, try collecting anywhere between 15,000-20,000 records (you can check this on your terminal). Once you finish collecting your data, you're ready to start training your model.
+
 ### Cleaning data
+
+This part is optional for people who want to further clean their dataset. You don't have to do this part, you can continue on to the Configuring Cloudlab for Training Section. section.
 
 In order to train a machine learning model we have to make sure we have a "clean" dataset, which means none of our data contains images of crashes or going through any objects. Still within the VNC window run the following on a terminal:
 ```
